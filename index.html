@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+
+  <title>Frontend Mentor | GitHub user search app</title>
+
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="script.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="app_header_group">
+      <span class="app_header_title">devfinder</span>
+
+      <div class="app_header_color_mode">
+        <button id="app_header_color_button" class="app_header_color">DARK</button>
+        <img src="assets/icon-moon.svg" alt="Moon Icon" class="app_header_color_icon" />
+
+      </div>
+    </div>
+
+    <div class="github_user_search_bar">
+      <div class="github_user_search_input">
+        <img src="assets/icon-search.svg" alt="Search Icon" />
+        <input type="text" id="github_username_search_input" placeholder="Search GitHub username...">
+      </div>
+      <span id="app_error_text" class="display_none app_error_text">No Results</span>
+      <button id="username_search_btn" class="username_search_btn">Search</button>
+    </div>
+
+    <div class="github_user_summary_group">
+      <div class="github_profile_info">
+        <div class="github_user_main_details">
+          <div class="github_user_icon">
+            <img id="github_profile_icon" src="assets/octocat.svg" alt="OctoCat" />
+          </div>
+          <div class="github_user_details">
+            <div class="github_username_details">
+              <h4 id="github_username" class="github_username">OctoCat</h4>
+              <a href="github.com/octocat" id="github_username_link" class="github_username_link">@octocat</a>
+            </div>
+            <div class"github_join_date">
+              Joined:
+              <span id="github_join_date">July 21, 2008</span>
+            </div>
+          </div>
+        </div>
+        <div id="github_user_bio" class="github_user_bio">
+          <p>This user has no biographical information.</p>
+        </div>
+        <div class="github_user_stats_group">
+          <div class="github_user_stat">
+            <p>Repos</p>
+            <span id="github_user_repos">10</span>
+          </div>
+          <div class="github_user_stat">
+            <p>Followers</p>
+            <span id="github_user_followers">3650</span>
+          </div>
+          <div class="github_user_stat">
+            <p>Following</p>
+            <span id="github_user_following">8</span>
+          </div>
+        </div>
+
+        <div class="github_user_social_wrapper">
+          <div class="github_user_social_col">
+            <div class="github_social_col__buttons">
+              <div class="github_social_col__button_icons">
+                <img src="assets/icon-location.svg" alt="User Location Icon" />
+              </div>
+              <p id="github_user_location">
+                <a href="#">San Francisco</a>
+              </p>
+            </div>
+            <div class="github_social_col__buttons">
+              <div class="github_social_col__button_icons github_user_col__button_website">
+                <img src="assets/icon-website.svg" alt="User Website" />
+              </div>
+              <p id="github_user_website">
+                <a href="">https://github.blog</a>
+              </p>
+            </div>
+
+          </div>
+          <div class="github_user_social_col">
+            <div class="github_social_col__buttons">
+              <div class="github_social_col__button_icons">
+                <img src="assets/icon-twitter.svg" alt="Twitter Website Icon" />
+              </div>
+              <p id="github_user_twitter">
+                <a href="">Not Available</a>
+              </p>
+            </div>
+            <div class="github_social_col__buttons">
+              <div class="github_social_col__button_icons">
+                <img src="assets/icon-company.svg" alt="Company Website Icon" />
+              </div>
+              <p id="github_user_company">
+                <a href="">@github</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</body>
+
+</html>
