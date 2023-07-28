@@ -1,6 +1,7 @@
 import { Octokit, App } from "https://esm.sh/octokit";
 
-const buttonSearchSubmit = document.getElementById("username_search_btn")
+const buttonSearchSubmit = document.getElementById("username_search_btn");
+const buttonModeSubmit = document.getElementById("app_header_color_button");
 const inputSearchTextField = document.getElementById("github_username_search_input");
 const githubUsernameText = document.getElementById("github_username");
 const githubUsernameLinkText = document.getElementById("github_username_link");
@@ -14,11 +15,22 @@ const githubProfileLocation = document.getElementById("github_user_location");
 const githubProfileWebsite = document.getElementById("github_user_website");
 const githubProfileTwitter = document.getElementById("github_user_twitter");
 const githubProfileCompany = document.getElementById("github_user_company");
+const githubErrorText = document.getElementById("app_error_text");
 
 const octokit = new Octokit({});
 
+let githubDarkMode = false;
+
 buttonSearchSubmit.addEventListener("click", () => {
     updateProfile();
+});
+
+buttonModeSubmit.addEventListener("click", () => {
+    if (githubDarkMode) {
+        updateTolightMode();
+    } else {
+        updateToDarkMode();
+    }
 });
 
 inputSearchTextField.addEventListener("keydown", (e) => {
@@ -26,6 +38,14 @@ inputSearchTextField.addEventListener("keydown", (e) => {
         updateProfile();
     }
 });
+
+function updateToLightMode() {
+
+}
+
+function updateToDarkMode() {
+
+}
 
 async function updateProfile() {
     if (inputSearchTextField.value !== "") {
@@ -36,7 +56,9 @@ async function updateProfile() {
                     'X-GitHub-Api-Version': '2022-11-28'
                 }
             });
-            console.log(octokitResponse.data);
+
+            // Don't display if success.
+            githubErrorText.classList.add("display_none");
 
             // Set the src for the Github Profile Icon
             githubProfileIcon.src = octokitResponse.data['avatar_url'];
@@ -72,14 +94,14 @@ async function updateProfile() {
             updateOctokitResponse(octokitResponse.data['bio'], githubProfileBio, bioNullText, bioNotNullText);
 
             // Set the Website text
-            const locationNullText = "Not Available";
+            const locationNullText = "<p>Not Available</p>";
             const encodedLocation =  encodeURIComponent(octokitResponse.data['location']);
             const googleLocationQueryLink = `https://www.google.com/maps/search/?api=1&query=${encodedLocation}`;
             const locationNotNullText = `<a href="${googleLocationQueryLink}">${octokitResponse.data['location']}</a>`;
             updateOctokitResponse(octokitResponse.data['location'], githubProfileLocation, locationNullText, locationNotNullText);
 
             // Set the Website text
-            const websiteNullText = "Not Available";
+            const websiteNullText = "<p>Not Available</p>";
             const websiteNotNullText = `<a href="${octokitResponse.data['blog']}">${octokitResponse.data['blog']}</a>`;
             updateOctokitResponse(octokitResponse.data['blog'], githubProfileWebsite, websiteNullText, websiteNotNullText);
 
@@ -96,6 +118,7 @@ async function updateProfile() {
             updateOctokitResponse(octokitResponse.data['company'], githubProfileCompany, companyNullText, companyNotNullText);
 
         } catch (error) {
+            githubErrorText.classList.remove("display_none");
             console.log(`Error! Status: ${error.status}. Message: ${error.response.data.message}`);
         }
 

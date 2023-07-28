@@ -6,6 +6,8 @@
     --github-background-color-light: #F6F8FF;
     --github-container-background-color-light: #FFFFFF;
     --github-search-bar-background-color: #60ABFF;
+    --github-social-links-text: #4B6A9B;
+    --github-social-links-text-active: #4B6A9B;
 }
 
 body {
@@ -23,15 +25,32 @@ body {
     border-radius: .75rem;
 }
 
-.github_user_bio,
-.github_user_social, 
-.github_user_stats_group, 
+.github_user_bio {
+    padding: .5rem 0rem;
+}
+
 .github_user_main_details {
-    padding: .75rem .35rem;
+    padding-bottom: 0rem;
+}
+
+.github_user_social, 
+.github_user_stats_group 
+ {
+    padding: .5rem .35rem;
 }
 
 .github_user_social div {
     text-align: center;
+}
+
+.github_user_social_col a,
+.github_user_social_col p {
+    color: var(--github-social-links-text);
+    text-decoration: none;    
+}
+
+.github_user_social_col a:hover {
+    text-decoration: underline;
 }
 
 .app_header_group {
@@ -125,6 +144,10 @@ body {
 .username_search_btn {
     border: none;
     border-radius: .25rem;
+    font-size: 1rem;
+    padding: .75rem 2rem;
+    color: var(--github-container-background-color-light);
+    background-color: #0079FF;
 }
 
 .github_user_icon img {
@@ -146,6 +169,14 @@ body {
     background-color: var(--github-stats-background-color-light);
 }
 
+.github_user_stat__title {
+    color: #4B6A9B;
+}
+
+.github_user_stat__stat {
+    font-weight: 600;
+}
+
 .github_user_social {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -155,11 +186,19 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.github_user_social_wrapper {
+    padding-top: 1rem;
+}
+
 @media only screen and (min-width: 768px) {
     .github_user_social_col {
         flex-wrap: wrap;
         flex-direction: row;
-        gap: 2rem;
+        justify-content: left;
+        align-content: baseline;
+        gap: 1rem;
+        padding: .25rem;
     }
     .github_user_social_wrapper,
     .github_user_stats_group,
@@ -172,7 +211,7 @@ body {
 
 .github_social_col {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     flex-direction: column;
 }
 
@@ -181,7 +220,7 @@ body {
     align-items: center;
     gap: .5rem;
     padding: .125rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
 
 .github_social_col__button_icons img {
