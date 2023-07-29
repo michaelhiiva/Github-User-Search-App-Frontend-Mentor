@@ -1,7 +1,9 @@
 import { Octokit, App } from "https://esm.sh/octokit";
 
+const rootStyle = document.documentElement.style;
 const buttonSearchSubmit = document.getElementById("username_search_btn");
 const buttonModeSubmit = document.getElementById("app_header_color_button");
+const modeIcon = document.getElementById("app_header_color_icon");
 const inputSearchTextField = document.getElementById("github_username_search_input");
 const githubUsernameText = document.getElementById("github_username");
 const githubUsernameLinkText = document.getElementById("github_username_link");
@@ -27,7 +29,7 @@ buttonSearchSubmit.addEventListener("click", () => {
 
 buttonModeSubmit.addEventListener("click", () => {
     if (githubDarkMode) {
-        updateTolightMode();
+        updateToLightMode();
     } else {
         updateToDarkMode();
     }
@@ -40,11 +42,41 @@ inputSearchTextField.addEventListener("keydown", (e) => {
 });
 
 function updateToLightMode() {
-
+    rootStyle.setProperty("--github-social-link-colors-light", "#4B6A9B");
+    rootStyle.setProperty("--github-username-link-color", "#0079FF");
+    rootStyle.setProperty("--github-bio-color", "#4B6A9B");
+    rootStyle.setProperty("--github-stats-background-color-light", "#F6F8FF");
+    rootStyle.setProperty("--github-background-color-light", "#F6F8FF");
+    rootStyle.setProperty("--github-container-background-color-light", "#FFFFFF");
+    rootStyle.setProperty("--github-search-bar-background-color", "#60ABFF");
+    rootStyle.setProperty("--github-social-links-text", "#4B6A9B");
+    rootStyle.setProperty("--github-social-links-text-active", "#4B6A9B");
+    rootStyle.setProperty("--github-username-search-button", "#0079FF");
+    rootStyle.setProperty("--github-color", "black");
+    rootStyle.setProperty("--github-username-link", "--github-social-links-text")
+    buttonModeSubmit.style.color = "black";
+    buttonModeSubmit.innerText = "DARK";
+    modeIcon.src = "assets/icon-moon.svg";
+    githubDarkMode = false;
 }
 
 function updateToDarkMode() {
-
+    rootStyle.setProperty("--github-social-link-colors-light", "#4B6A9B");
+    rootStyle.setProperty("--github-username-link-color", "#0079FF");
+    rootStyle.setProperty("--github-bio-color", "#4B6A9B");
+    rootStyle.setProperty("--github-stats-background-color-light", "#141D2F");
+    rootStyle.setProperty("--github-background-color-light", "#141D2F");
+    rootStyle.setProperty("--github-container-background-color-light", "#1E2A47");
+    rootStyle.setProperty("--github-search-bar-background-color", "#60ABFF");
+    rootStyle.setProperty("--github-social-links-text", "white");
+    rootStyle.setProperty("--github-social-links-text-active", "#4B6A9B");
+    rootStyle.setProperty("--github-username-search-button", "#0079FF");
+    rootStyle.setProperty("--github-color", "white");
+    rootStyle.setProperty("--github-username-link", "--github-social-links-text")
+    buttonModeSubmit.innerText = "LIGHT";
+    buttonModeSubmit.style.color = "white";
+    modeIcon.src = "assets/icon-sun.svg";
+    githubDarkMode = true;
 }
 
 async function updateProfile() {

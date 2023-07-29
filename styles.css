@@ -8,6 +8,10 @@
     --github-search-bar-background-color: #60ABFF;
     --github-social-links-text: #4B6A9B;
     --github-social-links-text-active: #4B6A9B;
+    --github-username-search-button: #0079FF;
+    --github-color: black;
+    --github-search-input-color: var(--github-color);
+    --github-username-link: var(--github-social-links-text);
 }
 
 body {
@@ -15,6 +19,7 @@ body {
     height: 100vh;
     place-content: center;
     background-color: var(--github-background-color-light);
+    color: var(--github-color);
 }
 
 .github_user_summary_group,
@@ -23,6 +28,15 @@ body {
     margin: 1rem auto;
     padding: 1rem;
     border-radius: .75rem;
+}
+
+.github_username_link {
+    color: var(--github-username-link);
+    text-decoration: none;
+}
+
+.github_username_link:hover {
+    text-decoration: underline;
 }
 
 .github_user_bio {
@@ -135,6 +149,8 @@ body {
 
 .github_user_search_bar input {
     border: 0; 
+    background: transparent;
+    color: var(--github-search-input-color);
 }
 
 .github_user_search_bar input:focus {
@@ -147,7 +163,7 @@ body {
     font-size: 1rem;
     padding: .75rem 2rem;
     color: var(--github-container-background-color-light);
-    background-color: #0079FF;
+    background-color: var(--github-username-search-button);
 }
 
 .github_user_icon img {
